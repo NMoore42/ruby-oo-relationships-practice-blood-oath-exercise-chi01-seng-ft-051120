@@ -22,6 +22,18 @@ class Follower
     BloodOath.new(self, cult_instance, 2020)
   end
 
+  def fellow_cult_members
+    #returns a unique Array of followers who are in the same cults as you
+    follower_arr = []
+    cults.each do |cult_instance|
+      not_me_follower_arr = cult_instance.followers.select do |follower_instance|
+        follower_instance != self
+      end
+      follower_arr += not_me_follower_arr
+    end
+    follower_arr.uniq
+  end
+
   def self.all
     @@all
   end

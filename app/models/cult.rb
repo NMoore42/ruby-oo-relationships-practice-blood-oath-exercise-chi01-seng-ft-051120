@@ -27,6 +27,18 @@ class Cult
     followers.count
   end
 
+  def average_age
+    #returns a Float that is the average age of this cult's followers
+    # follower_age_arr = followers.map {|follower_instance| follower_instance.age }
+    # follower_age_total = follower_age_arr.sum
+    # follower_count = follower_age_arr.count
+    # avg_age = follower_age_total / follower_count.to_f
+
+    age_total = followers.sum { |follower_instance| follower_instance.age }
+    follower_float = followers.count.to_f
+    age_total / follower_float
+  end
+
   def self.all
     @@all
   end
